@@ -12,8 +12,20 @@ public class Main {
 
 
     public static void main(String[] args) {
-        convertMiles();
-        convertKms();
+        Scanner scanner = new Scanner(System.in);
+        System.out.print("""
+                Choose an option:
+                1 - Converting kilometers to miles
+                2 - Converting miles to kilometers
+                 """);
+
+        int option = scanner.nextInt();
+
+        switch (option) {
+            case 1 -> convertKms();
+            case 2 -> convertMiles();
+            default -> System.out.println("No such option!");
+        }
     }
 
     private static void convertMiles() {
@@ -24,7 +36,7 @@ public class Main {
 
         input1 = convertMilesToKilometers(miles);
 
-        System.out.println(miles + " miles = " + roundValue(input1) + " kilometers");
+        dataValid();
     }
 
     private static void convertKms() {
@@ -35,7 +47,17 @@ public class Main {
 
         input2 = convertKilometersToMiles(kms);
 
-        System.out.println(kms + " kilometers = " + roundValue(input2) + " miles");
+        dataValid();
+    }
+
+    private static void dataValid() {
+        if (miles > 0) {
+            System.out.println(miles + " miles = " + roundValue(input1) + " kilometers");
+        } else if (kms > 0) {
+            System.out.println(kms + " kilometers = " + roundValue(input2) + " miles");
+        } else {
+            System.out.println("Wrong! Try again.");
+        }
     }
 
     private static double convertMilesToKilometers(double miles) {
