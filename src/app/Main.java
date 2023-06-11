@@ -1,5 +1,6 @@
 package app;
 
+import java.text.DecimalFormat;
 import java.util.Scanner;
 
 public class Main {
@@ -23,7 +24,7 @@ public class Main {
 
         input1 = convertMilesToKilometers(miles);
 
-        System.out.println(miles + " miles = " + input1 + " kilometers");
+        System.out.println(miles + " miles = " + roundValue(input1) + " kilometers");
     }
 
     private static void convertKms() {
@@ -34,7 +35,7 @@ public class Main {
 
         input2 = convertKilometersToMiles(kms);
 
-        System.out.println(kms + " kilometers = " + input2 + " miles");
+        System.out.println(kms + " kilometers = " + roundValue(input2) + " miles");
     }
 
     private static double convertMilesToKilometers(double miles) {
@@ -43,5 +44,9 @@ public class Main {
 
     private static double convertKilometersToMiles(double kms) {
         return kms / 1.609344;
+    }
+
+    public static String roundValue(double value) {
+        return new DecimalFormat("0.0").format(value);
     }
 }
