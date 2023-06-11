@@ -11,8 +11,20 @@ public class Main {
 
 
     public static void main(String[] args) {
-        convertMiles();
-        convertKms();
+        Scanner scanner = new Scanner(System.in);
+        System.out.print("""
+                Choose an option:
+                1 - Converting kilometers to miles
+                2 - Converting miles to kilometers
+                 """);
+
+        int option = scanner.nextInt();
+
+        switch (option) {
+            case 1 -> convertKms();
+            case 2 -> convertMiles();
+            default -> System.out.println("No such option!");
+        }
     }
 
     private static void convertMiles() {
